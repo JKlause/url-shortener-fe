@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UrlForm from '../components/url/UrlForm';
 import Urls from '../components/url/Urls';
-import { getUrls } from '../selectors/url/Selectors';
+import { getUrls } from '../selectors/urlSelectors';
 import { createUrl, fetchUserUrls } from '../actions/urlActions';
 import { sessionSignOut } from '../actions/sessionActions';
 
@@ -17,9 +17,10 @@ function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
 
   return (
     <>
-      <button onClick={() => signOut()}>Sign Out</button>
+      <span>Please include https:// or http:// to your URL address</span>
       <UrlForm handleSubmit={handleSubmit} />
       <Urls urls={urls} />
+      <button onClick={() => signOut()}>Sign Out</button>
     </>
   );
 }
@@ -52,6 +53,7 @@ UrlContainer.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.shape({
     urlText: PropTypes.string.isRequired,
     shortUrlText: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired,
   handleSubmit: PropTypes.func.isRequired,
