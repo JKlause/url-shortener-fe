@@ -10,8 +10,8 @@ import { getSessionId, getSessionLoading } from '../selectors/sessionSelectors';
 import { sessionVerify } from '../actions/sessionActions';
 import Signup from '../containers/SignUp';
 import SignIn from '../containers/SignIn';
-import MemeContainer from '../containers/MemeContainer';
-import MemeDetail from './meme/MemeDetail';
+import UrlContainer from '../containers/UrlContainer';
+import UrlDetail from './url/UrlDetail';
 
 const PrivateRoute = ({ ...rest }) => {
   const sessionId = useSelector(getSessionId);
@@ -34,8 +34,8 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <PrivateRoute exact path="/" component={MemeContainer}/>
-        <PrivateRoute path="/meme/:id" component={MemeDetail}/>
+        <PrivateRoute exact path="/" component={UrlContainer}/>
+        <PrivateRoute path="/url/:id" component={UrlDetail}/>
         <Route path="/signin" component={SignIn}/>
         <Route path="/signup" component={Signup}/>
       </Switch>
