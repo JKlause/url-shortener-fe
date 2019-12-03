@@ -1,5 +1,6 @@
 import { postUrl, getUrlById, getUserUrls, deleteUrlById } from '../services/url';
 
+export const SET_URL_ERROR = 'SET_URL_ERROR';
 export const CREATE_URL = 'CREATE_URL';
 export const createUrl = url => dispatch => {
   postUrl(url)
@@ -7,6 +8,12 @@ export const createUrl = url => dispatch => {
       dispatch({
         type: CREATE_URL,
         payload: url
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_URL_ERROR,
+        payload: err
       });
     });
 };

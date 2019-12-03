@@ -14,13 +14,16 @@ export default function Url({ url }) {
     setCopySuccess('Copied!');
   }
 
-  //line 23 conditionally render shortText/id
   return (
     <div>
       <div>
         Your Shortened Url for {url.urlText} is
         <form>
-          <textarea ref={textAreaRef} value={url.shortUrlText ? url.shortUrlText : url.id}/> 
+          <textarea 
+            readOnly
+            ref={textAreaRef} 
+            value={url.shortUrlText ? url.shortUrlText : url.id}
+          /> 
         </form>
         <div>
           {

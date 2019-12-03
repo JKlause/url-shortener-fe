@@ -1,4 +1,4 @@
 # meme-generator-fe
 
-show error of duplicate in mongo for shorturl in url form
+pull in shorturl that is already being used
 do css

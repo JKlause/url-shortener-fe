@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UrlForm from '../components/url/UrlForm';
 import Urls from '../components/url/Urls';
-import { getUrls } from '../selectors/urlSelectors';
+import { getUrls, getUrlError } from '../selectors/urlSelectors';
 import { createUrl, fetchUserUrls } from '../actions/urlActions';
 import { sessionSignOut } from '../actions/sessionActions';
 
 
 
-function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
+function UrlContainer({ urls, error, handleSubmit, loadUrls, signOut }) {
   
   useEffect(()=> {
     loadUrls();
@@ -18,6 +18,7 @@ function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
   return (
     <>
       <span>Please include https:// or http:// to your URL address</span>
+      {error && <span>{error}</span>}
       <UrlForm handleSubmit={handleSubmit} />
       <Urls urls={urls} />
       <span>Use your shortened url with http://localhost:7891/publicUrl/(your-url-here)</span>
@@ -29,6 +30,7 @@ function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
 
 const mapStateToProps = state => ({
   urls: getUrls(state),
+  error: getUrlError(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -64,6 +66,7 @@ UrlContainer.propTypes = {
     count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired,
+  error: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
   loadUrls: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired
