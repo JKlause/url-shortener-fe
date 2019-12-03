@@ -16,6 +16,12 @@ export const sessionSignup = (username, password) => dispatch => {
         type: SET_SESSION,
         payload: user
       });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SESSION_ERROR,
+        payload: err
+      });
     });
 };
 
@@ -28,6 +34,12 @@ export const sessionSignIn = (username, password) => dispatch => {
       dispatch({
         type: SET_SESSION,
         payload: user
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SESSION_ERROR,
+        payload: err
       });
     });
 };

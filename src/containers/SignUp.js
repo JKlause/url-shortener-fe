@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import UserForm from '../components/user/UserForm';
 import { sessionSignup } from '../actions/sessionActions';
+import { getSessionError } from '../selectors/sessionSelectors';
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
   buttonText: 'Sign Up',
   redirectText: 'Already A User? Sign In!',
-  redirectLink: '/signin'
+  redirectLink: '/signin',
+  error: getSessionError(state)
 });
 
 const mapDispatchToProps = dispatch => ({

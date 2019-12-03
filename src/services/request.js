@@ -7,13 +7,29 @@ const request = (url, method, body) => {
     credentials: 'include',
     body: body && JSON.stringify(body)
   })
-    .then(res => {
+    .then((res) => {
       if(!res.ok) {
-        throw `Unable to fetch from ${url}`;
+        return res.json()
+          .then(err => {
+            throw err;
+          })
+          .catch(err => {
+            console.log(err);
+            if(RegExp(/(^E11000)/).test(err.message)) {
+              throw 'Username already taken. Please choose another.';
+            }
+            else if(err.message === 'Invalid username or password') {
+              throw err.message;
+            }
+            else {
+              throw `Unable to fetch from ${url}`;
+            }
+          });
       }
-      
-      return res.json();
-    });
+      else {
+        return res.json();
+      }
+    })
 };
 
 export const post = (url, body) => request(url, 'POST', body);
