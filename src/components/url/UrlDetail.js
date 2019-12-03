@@ -15,10 +15,11 @@ export default function MemeDetail({ match }) {
 
   if(!url) return <h1>Loading...</h1>;
 
+  //conditionally render shortText/id
   return (
     <>
       <div>
-        <h2>{url.id}</h2>
+        <h2>{url.shortUrlText ? url.shortUrlText : url.id}</h2>
         <h3>Connects To {url.urlText}</h3>
         <h3>Has Been Hit {url.count} Times</h3>
       </div>

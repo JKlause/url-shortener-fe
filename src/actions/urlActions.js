@@ -1,4 +1,4 @@
-import { postUrl, getUrlById, getUserUrls } from '../services/url';
+import { postUrl, getUrlById, getUserUrls, deleteUrlById } from '../services/url';
 
 export const CREATE_URL = 'CREATE_URL';
 export const createUrl = url => dispatch => {
@@ -30,5 +30,12 @@ export const fetchDetailUrl = id => dispatch => {
         type: SET_DETAIL_URL,
         payload: url
       });
+    });
+};
+
+export const deleteUrl = id => {
+  deleteUrlById(id)
+    .then(() => {
+      fetchUserUrls();
     });
 };

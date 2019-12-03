@@ -28,13 +28,20 @@ function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
 
 
 const mapStateToProps = state => ({
-  urls: getUrls(state)
+  urls: getUrls(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit(event, urlText) {
+  handleSubmit(event, urlText, shortUrlText) {
     event.preventDefault();
-    dispatch(createUrl({ urlText, count: 0 }));
+
+    const dispatchUrl = {
+      urlText,
+      count: 0
+    };
+    if(shortUrlText) dispatchUrl.shortUrlText = shortUrlText;
+
+    dispatch(createUrl(dispatchUrl));
   },
   loadUrls() {
     dispatch(fetchUserUrls());
@@ -53,6 +60,7 @@ export default connect(
 UrlContainer.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.shape({
     urlText: PropTypes.string.isRequired,
+    shortUrlText: PropTypes.string,
     count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired,

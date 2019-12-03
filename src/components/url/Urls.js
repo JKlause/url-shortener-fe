@@ -9,6 +9,7 @@ export default function Urls({ urls }) {
       count: url.count,
       id: url.id
     };
+    if(url.shortUrlText) urlData.shortUrlText = url.shortUrlText;
     return (
       <Url url={urlData} key={url.id}/>
     );
@@ -24,6 +25,7 @@ export default function Urls({ urls }) {
 Urls.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.shape({
     urlText: PropTypes.string.isRequired,
+    shortUrlText: PropTypes.string,
     count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired
