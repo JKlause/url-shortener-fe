@@ -1,4 +1,4 @@
-import { postUrl, getUrlById, getUserUrls, putUrlCount } from '../services/url';
+import { postUrl, getUrlById, getUserUrls } from '../services/url';
 
 export const CREATE_URL = 'CREATE_URL';
 export const createUrl = url => dispatch => {
@@ -31,8 +31,4 @@ export const fetchDetailUrl = id => dispatch => {
         payload: url
       });
     });
-};
-
-export const updateCount = url => {
-  putUrlCount(url);
 };

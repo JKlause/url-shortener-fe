@@ -20,6 +20,7 @@ function UrlContainer({ urls, handleSubmit, loadUrls, signOut }) {
       <span>Please include https:// or http:// to your URL address</span>
       <UrlForm handleSubmit={handleSubmit} />
       <Urls urls={urls} />
+      <span>Use your shortened url with http://localhost:7891/publicUrl/(your-url-here)</span>
       <button onClick={() => signOut()}>Sign Out</button>
     </>
   );
@@ -31,9 +32,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit(event, urlText, shortUrlText) {
+  handleSubmit(event, urlText) {
     event.preventDefault();
-    dispatch(createUrl({ urlText, shortUrlText, count: 0 }));
+    dispatch(createUrl({ urlText, count: 0 }));
   },
   loadUrls() {
     dispatch(fetchUserUrls());
@@ -52,7 +53,6 @@ export default connect(
 UrlContainer.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.shape({
     urlText: PropTypes.string.isRequired,
-    shortUrlText: PropTypes.string.isRequired,
     count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired,

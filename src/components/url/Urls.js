@@ -6,7 +6,6 @@ export default function Urls({ urls }) {
   const urlElements = urls.map(url => {
     const urlData = {
       urlText: url.urlText,
-      shortUrlText: url.shortUrlText,
       count: url.count,
       id: url.id
     };
@@ -25,7 +24,6 @@ export default function Urls({ urls }) {
 Urls.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.shape({
     urlText: PropTypes.string.isRequired,
-    shortUrlText: PropTypes.string.isRequired,
     count: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired

@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 
 const UrlForm = ({ handleSubmit }) => {
   const [urlText, setUrlText] = useState('');
-  const [shortUrlText, setShortUrlText] = useState('');
 
   return (
     <section>
       <form onSubmit={event => {
-        handleSubmit(event, urlText, shortUrlText);
+        handleSubmit(event, urlText);
         setUrlText('');
-        setShortUrlText('');
       }}>
-        <input type="text" value={urlText} onChange={({ target }) => setUrlText(target.value)} placeholder="Actual URL Address to Shorten" />
-        <input type="text" value={shortUrlText} onChange={({ target }) => setShortUrlText(target.value)} placeholder="Your Shortened Url Custom Text" />
+        <input type="text" value={urlText} onChange={({ target }) => setUrlText(target.value)} placeholder="URL Address to Shorten" />
         <button>Create Short Url</button>
       </form>
     </section>
