@@ -1,4 +1,5 @@
 # meme-generator-fe
 
-pull in shorturl that is already being used
+//get by id, deal with hits array
 do css
+do readme

@@ -15,13 +15,25 @@ export default function MemeDetail({ match }) {
 
   if(!url) return <h1>Loading...</h1>;
 
-  //conditionally render shortText/id
   return (
     <>
       <div>
         <h2>{url.shortUrlText ? url.shortUrlText : url.id}</h2>
         <h3>Connects To {url.urlText}</h3>
         <h3>Has Been Hit {url.count} Times</h3>
+        {url.hits && 
+        <ul>
+          {url.hits.map(hit => (
+            <li key={hit.time}>
+              <span>Time {hit.time}</span>
+              {hit.location && 
+                <div>
+                  <span>Latitude: {hit.location.lat}</span>
+                  <span>Longitude: {hit.location.lng}</span>
+                </div>}
+            </li>))}
+        </ul>
+        }
       </div>
     </>
   );
