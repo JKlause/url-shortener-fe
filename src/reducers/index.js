@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import session from './sessionReducer';
-import memes from './memeReducer';
+import urls from './urlReducer';
 
 export default combineReducers({
   session,
-  memes
+  urls
 });

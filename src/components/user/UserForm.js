@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSessionId } from '../../selectors/sessionSelectors';
 
-const UserForm = ({ buttonText, handleSubmit, redirectText, redirectLink }) => {
+const UserForm = ({ buttonText, redirectText, redirectLink, error, handleSubmit }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const sessionId = useSelector(getSessionId);
@@ -13,6 +13,7 @@ const UserForm = ({ buttonText, handleSubmit, redirectText, redirectLink }) => {
 
   return (
     <>
+      {error && <span>{error}</span>}
       <form onSubmit={event => handleSubmit(event, username, password)}>
         <input type="text" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Username" />
         <input type="password" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
@@ -25,9 +26,10 @@ const UserForm = ({ buttonText, handleSubmit, redirectText, redirectLink }) => {
 
 UserForm.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   redirectText: PropTypes.string.isRequired,
-  redirectLink: PropTypes.string.isRequired
+  redirectLink: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default UserForm;
