@@ -40,9 +40,17 @@ export const fetchDetailUrl = id => dispatch => {
     });
 };
 
-export const deleteUrl = id => {
+
+export const SET_URL_RELOAD = 'SET_URL_RELOAD';
+export const deleteUrl = id => dispatch => {
   deleteUrlById(id)
     .then(() => {
       fetchUserUrls();
+    })
+    .then(() => {
+      dispatch({
+        type: SET_URL_RELOAD,
+        payload: true
+      });
     });
 };

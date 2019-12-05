@@ -1,7 +1,8 @@
 import {
   getUrls,
   getDetailUrl,
-  getUrlError
+  getUrlError,
+  getUrlReload
 } from '../urlSelectors';
 
 describe('urlSelectors', () => {
@@ -10,7 +11,8 @@ describe('urlSelectors', () => {
     urls: {
       urls: 'dog',
       detail: 'cat',
-      error: 'gerbil'
+      error: 'gerbil',
+      reload: 'fish'
     }
   };
 
@@ -22,7 +24,11 @@ describe('urlSelectors', () => {
     expect(getDetailUrl(state)).toBe('cat');
   });
 
-  it('getUrls retrieves the correct piece of state', () => {
+  it('getUrlError retrieves the correct piece of state', () => {
     expect(getUrlError(state)).toBe('gerbil');
+  });
+
+  it('getUrlReload retrieves the correct piece of state', () => {
+    expect(getUrlReload(state)).toBe('fish');
   });
 });

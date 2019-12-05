@@ -10,7 +10,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case SET_SESSION_LOADING:
-      return { ...state, loading: true };
+      return { ...state, loading: true, };
     case SET_SESSION:
       return { ...state, ...action.payload, loading: false, error: null };
     case SET_SESSION_ERROR:

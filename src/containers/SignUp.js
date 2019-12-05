@@ -14,6 +14,11 @@ const mapDispatchToProps = dispatch => ({
   handleSubmit(event, username, password) {
     event.preventDefault();
     dispatch(sessionSignup(username, password));
+    // .then(()=>{
+    //   // dispatch({
+    //   //   type: SET_SESSION_ERROR
+    //   // })
+    // });
   }
 });
 

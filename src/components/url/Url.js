@@ -35,7 +35,9 @@ export default function Url({ url }) {
           }
         </div>
       </div>
-      <button onClick={()=> deleteUrl(url.id)}>Delete</button>
+      <button onClick={()=> { 
+        if(window.confirm('Are you sure you wish to delete this url? This action cannot be undone.')) deleteUrl(url.id); 
+      }}>Delete</button>
       <Link to={`/url/${url.id}`}>
         <span>Url Details</span>
       </Link>

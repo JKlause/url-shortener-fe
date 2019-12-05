@@ -3,6 +3,7 @@ import {
   CREATE_URL,
   SET_URLS,
   SET_DETAIL_URL,
+  SET_URL_RELOAD
 } from '../urlActions';
 
 describe('url Actions', ()=> {
@@ -21,6 +22,10 @@ describe('url Actions', ()=> {
 
   it('SET_DETAIL_URL equals the correct string', () => {
     expect(SET_DETAIL_URL).toBe('SET_DETAIL_URL');
+  });
+
+  it('SET_URL_RELOAD equals the correct string', () => {
+    expect(SET_URL_RELOAD).toBe('SET_URL_RELOAD');
   });
   
 });

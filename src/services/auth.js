@@ -1,6 +1,7 @@
 import { post, get } from './request';
+import { baseUrl } from './dbUrl';
 
-const AUTH_URL = 'http://localhost:7891/api/v1/auth';
+const AUTH_URL = `${baseUrl}/api/v1/auth`;
 
 export const signup = (username, password) => post(`${AUTH_URL}/signup`, 
   { username, password });

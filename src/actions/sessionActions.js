@@ -68,10 +68,10 @@ export const sessionVerify = () => dispatch => {
         payload: user
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
-        type: SET_SESSION_ERROR,
-        payload: err
+        type: SET_SESSION,
+        payload: null
       });
     });
 };

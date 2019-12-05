@@ -1,6 +1,7 @@
 import { post, get, del } from './request';
+import { baseUrl } from './dbUrl';
 
-const URL_URL = 'http://localhost:7891/api/v1/url';
+const URL_URL = `${baseUrl}/api/v1/url`;
 
 export const postUrl = url => post(`${URL_URL}`, url);
 export const getUserUrls = () => get(`${URL_URL}`);
