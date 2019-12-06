@@ -4,6 +4,7 @@ import { signup, signIn, signOut, verifySession } from '../services/auth';
 export const SET_SESSION = 'SET_SESSION';
 export const SET_SESSION_LOADING = 'SET_SESSION_LOADING';
 export const SET_SESSION_ERROR = 'SET_SESSION_ERROR';
+
 export const sessionSignup = (username, password) => dispatch => {
   dispatch({
     type: SET_SESSION_LOADING
@@ -74,4 +75,12 @@ export const sessionVerify = () => dispatch => {
         payload: null
       });
     });
+};
+
+export const CLEAR_SESSION_ERROR = 'CLEAR_SESSION_ERROR';
+export const clearSessionError = () => dispatch => {
+  console.log('ding')
+  dispatch({
+    type: CLEAR_SESSION_ERROR
+  });
 };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserForm from '../components/user/UserForm';
-import { sessionSignIn } from '../actions/sessionActions';
+import { sessionSignIn, clearSessionError } from '../actions/sessionActions';
 import { getSessionError } from '../selectors/sessionSelectors';
 
 const mapStateToProps = state => ({
@@ -14,6 +14,9 @@ const mapDispatchToProps = dispatch => ({
   handleSubmit(event, username, password) {
     event.preventDefault();
     dispatch(sessionSignIn(username, password));
+  },
+  handleClearError() {
+    dispatch(clearSessionError());
   }
 });
 

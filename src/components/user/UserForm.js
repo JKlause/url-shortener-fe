@@ -4,7 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSessionId } from '../../selectors/sessionSelectors';
 
-const UserForm = ({ buttonText, redirectText, redirectLink, error, handleSubmit }) => {
+
+const UserForm = ({ buttonText, redirectText, redirectLink, error, handleSubmit, handleClearError }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const sessionId = useSelector(getSessionId);
@@ -19,7 +20,7 @@ const UserForm = ({ buttonText, redirectText, redirectLink, error, handleSubmit 
         <input type="password" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <button>{buttonText}</button>
       </form>
-      <Link to={redirectLink}>{redirectText}</Link>
+      <Link to={redirectLink} onClick={()=> handleClearError()}>{redirectText}</Link>
     </>
   );
 };
@@ -29,7 +30,8 @@ UserForm.propTypes = {
   redirectText: PropTypes.string.isRequired,
   redirectLink: PropTypes.string.isRequired,
   error: PropTypes.string,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  handleClearError: PropTypes.func.isRequired
 };
 
 export default UserForm;
