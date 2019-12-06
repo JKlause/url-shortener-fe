@@ -20,8 +20,6 @@ Users can delete a URL slug.
 
 
 TO DO:
-1. delete activates a confirm... needs to refetch? 
-2. rework error so that it throws correct error from backend, and you can just pass it directly to the front end
-3. toggle to sign up sign in gets rid of error message on front end... change redux handling of error to create set session error true or set session error false?
+1. delete url needs to refetch? 
 do css
 
