@@ -20,6 +20,6 @@ Users can delete a URL slug.
 
 
 TO DO:
-1. delete url needs to refetch? 
+1. delete url needs to refetch/refresh?
 do css
 

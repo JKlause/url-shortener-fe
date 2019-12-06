@@ -79,7 +79,6 @@ export const sessionVerify = () => dispatch => {
 
 export const CLEAR_SESSION_ERROR = 'CLEAR_SESSION_ERROR';
 export const clearSessionError = () => dispatch => {
-  console.log('ding')
   dispatch({
     type: CLEAR_SESSION_ERROR
   });
